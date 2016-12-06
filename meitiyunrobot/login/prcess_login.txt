@@ -1,6 +1,6 @@
 *** Settings ***
 Library           Selenium2Library
-Resource          element_login.txt
+Resource          element_login.html
 
 *** Keywords ***
 login
