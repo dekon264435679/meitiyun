@@ -1,0 +1,45 @@
+*** Settings ***
+Resource          ../element_gallery/element_gallery_add.txt
+Resource          ../element_gallery/element_gallery_enter.txt
+Resource          ../element_gallery/element_gallery_edit.txt
+
+*** Keywords ***
+gallery_enter_add
+    [Documentation]    进入新建
+    enter_gallery
+    sleep    8
+    enter_add
+
+gallery_add_Required
+    [Arguments]    ${title}    ${description}    ${keyword}
+    [Documentation]    必填项
+    add_title    ${title}
+    add_category
+    add_description    ${description}
+    add_keyword    ${keyword}
+
+gallery_add_Optional
+    [Arguments]    ${source_name}    ${source_url}    ${author}    ${sort}
+    [Documentation]    选填项
+    add_source_name    ${source_name}
+    add_source_url    ${source_url}
+    add_author    ${author}
+    add_sort    ${sort}
+
+gallery_add_picture
+    [Arguments]    ${picurl}    ${singledescription}
+    [Documentation]    图片地址：绝对地址：D:\\Python27\\test\\测试项目\\示例1\\element_gallery\\picture
+    ...
+    ...    相对地址：${CURDIR}\\示例1\\element_gallery\\picture\\1.jpg
+    add_picture    ${picurl}
+    add_singledescription    ${singledescription}
+
+gallery_publish_back
+    publish
+    sleep    3
+    back
+
+gallery_publish_look
+    publish
+    sleep    3
+    look

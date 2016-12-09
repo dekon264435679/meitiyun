@@ -1,0 +1,21 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+enter_gallery
+    [Documentation]    进入图集应用
+    Click Element    name=gallery
+
+publish
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Click Element    xpath=//div[@class="publish-panel"]/a[1]
+    Unselect Frame
+
+back
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Click Element    xpath=//div[@class="modal-dialog"]/div[1]/div[2]/div[3]/a[1]
+
+look
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Click Element    xpath=//div[@class="modal-dialog"]/div[1]/div[2]/div[3]/a[2]    #发布后查看
+    Unselect Frame

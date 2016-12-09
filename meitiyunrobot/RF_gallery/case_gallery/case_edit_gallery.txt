@@ -1,0 +1,24 @@
+*** Settings ***
+Resource          ../process_gallery/process_gallery_add.txt
+Resource          ../process_gallery/process_gallery_edit.txt
+Resource          ../../login/prcess_login.txt
+
+*** Test Cases ***
+修改图集_修改所有必填项
+    [Tags]    editgallery1
+    login    http://site.tt.cmstop.cn/    lidongli@cmstop.com    123456
+    sleep    3
+    gallery_enter_edit
+    sleep    4
+    gallery_edit_Required    修改图集标题    修改图集摘要    修改图集关键词    修改图集图说
+    gallery_publish_back
+
+修改图集_去掉所有选填项
+    [Documentation]    去掉这个有问题
+    [Tags]    editgallery2
+    login    http://site.tt.cmstop.cn/    lidongli@cmstop.com    123456
+    sleep    5
+    gallery_enter_edit
+    sleep    5
+    gallery_delect_Optional
+    gallery_publish_back

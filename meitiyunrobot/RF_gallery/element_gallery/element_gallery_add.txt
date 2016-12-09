@@ -1,0 +1,99 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+enter_add
+    [Documentation]    进入新建页
+    Click Element    xpath=//div[@class="transform add-panel"]/a[1]/i[1]
+
+add_title
+    [Arguments]    ${title}
+    [Documentation]    添加标题
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@id="gallery-add-title"]/textarea[1]    ${title}
+    Unselect Frame
+
+add_picture
+    [Arguments]    ${picurl}
+    [Documentation]    添加图片
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Choose File    xpath=//div[@class="addimageBox"]/input[1]    ${picurl}    #这个是相对路径，也可以用绝对路径    ${CURDIR}\\picture\\1.jpg
+    Unselect Frame
+
+add_description
+    [Arguments]    ${description}
+    [Documentation]    添加摘要
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@class="description-outter"]/textarea[1]    ${description}
+    Unselect Frame
+
+add_keyword
+    [Arguments]    ${keyword}
+    [Documentation]    添加关键词
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@class="keyword"]/div[1]/div[2]/input[1]    ${keyword}
+    Unselect Frame
+
+add_category
+    [Documentation]    添加分类
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Click Element    xpath=//div[@class="row category-row"]/div[1]    #打开栏目下拉框
+    Click Element    xpath=//div[@block="menu"]/div[2]    #选择第一个分类
+    Click Element    xpath=//div[@class="row category-row open"]/div[1]    #关闭下拉框
+    Unselect Frame
+
+add_commondescription
+    [Documentation]    批量添加图说
+
+add_singledescription
+    [Arguments]    ${singledescription}
+    [Documentation]    添加单个图说
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@class="textarea-outter"]/textarea[1]    ${singledescription}
+    Unselect Frame
+
+open_original
+    [Documentation]    开启原创声明
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Click Element    xpath=//div[@class="flipswitch-background"]/div[1]
+    Unselect Frame
+
+add_author
+    [Arguments]    ${author}
+    [Documentation]    添加作者
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@class="row author-row"]/div[1]/div[1]/div[2]/input[1]    ${author}
+    Unselect Frame
+
+add_source_name
+    [Arguments]    ${source_name}
+    [Documentation]    添加来源名称
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@class="source-panel"]/input[1]    ${source_name}
+    Unselect Frame
+
+add_source_url
+    [Arguments]    ${source_url}
+    [Documentation]    添加来源url
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@class="source-panel"]/div[1]/input[1]    ${source_url}
+    Unselect Frame
+
+add_sort
+    [Arguments]    ${sort}
+    [Documentation]    添加权重
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@class="row sort-row"]/div[1]/input[1]    ${sort}
+    Unselect Frame
+
+add_timeout_off
+    [Documentation]    定时下线
+
+add_timeout_on
+    [Documentation]    定时上线
+
+open_watermark
+    [Documentation]    开启水印开关
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Click Element    xpath=//div[@class="row water-row ng-scope"]/div[1]/div[1]
+    Unselect Frame

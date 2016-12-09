@@ -1,0 +1,27 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Keywords ***
+enter_edit
+    [Documentation]    进入编辑页
+    Click Element    xpath=//div[@class="functionContainer"]/span[1]
+
+edit_title
+    [Arguments]    ${title}
+    [Documentation]    修改标题
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@id="gallery-add-title"]/textarea[1]    ${title}
+    Unselect Frame
+
+edit_singledescription
+    [Arguments]    ${singledescription}
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Input Text    xpath=//div[@class="textarea-outter"]/textarea[1]    ${singledescription}
+    Unselect Frame
+
+edit_category
+    Select Frame    xpath=//div[@class="iContainer"]/iframe[1]
+    Click Element    xpath=//div[@class="row category-row"]/div[1]    #打开栏目下拉框
+    Click Element    xpath=//div[@block="menu"]/div[3]    #选择第二个分类
+    Click Element    xpath=//div[@class="row category-row open"]/div[1]    #关闭下拉框
+    Unselect Frame

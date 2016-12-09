@@ -1,0 +1,25 @@
+*** Settings ***
+Resource          ../element_gallery/element_gallery_add.txt
+Resource          ../element_gallery/element_gallery_enter.txt
+Resource          ../element_gallery/element_gallery_edit.txt
+
+*** Keywords ***
+gallery_enter_edit
+    [Documentation]    进入编辑
+    enter_gallery
+    sleep    6
+    enter_edit
+
+gallery_edit_Required
+    [Arguments]    ${title}    ${description}    ${keyword}    ${singledescription}
+    [Documentation]    编辑必填项
+    edit_title    ${title}
+    add_description    ${description}
+    add_keyword    ${keyword}
+    edit_category
+    edit_singledescription    ${singledescription}
+
+gallery_delect_Optional
+    add_source_name    null
+    add_source_url    null
+    add_author    null

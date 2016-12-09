@@ -1,0 +1,29 @@
+*** Settings ***
+Resource          ../../login/prcess_login.txt
+Resource          ../process_gallery/process_gallery_add.txt
+
+*** Test Cases ***
+新建图集_只添加必填项
+    [Documentation]    图片地址最好用绝对地址，实例
+    ...    D:\\Python27\\test\\测试项目\\示例1\\element_gallery\\picture\\2.jpg
+    [Tags]    addgallery1
+    login    http://site.tt.cmstop.cn/    lidongli@cmstop.com    123456
+    sleep    10
+    gallery_enter_add
+    sleep    3
+    gallery_add_Required    图集标题(必填)    图集摘要(必填)    图集关键词(必填)
+    gallery_add_picture    D:\\Python27\\test\\测试项目\\示例1\\element_gallery\\picture\\2.jpg    图集图说(必填)
+    sleep    3
+    gallery_publish_back
+
+新建图集_添加所有选填项
+    [Tags]    addgallery2
+    login    http://site.tt.cmstop.cn/    lidongli@cmstop.com    123456
+    sleep    10
+    gallery_enter_add
+    sleep    5
+    gallery_add_Required    图集标题(选填)    图集摘要(选填)    图集关键词(选填)
+    gallery_add_Optional    图集来源名称(选填)    http://site.cmstop.cc    图集作者(选填)    100
+    gallery_add_picture    D:\\Python27\\test\\测试项目\\示例1\\element_gallery\\picture\\3.jpg    图集图说(选填)
+    sleep    3
+    gallery_publish_back
